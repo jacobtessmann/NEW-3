@@ -1,0 +1,59 @@
+html {
+  font-size: min(1.44vh, 0.411vw + 1.029vh, 2.24vw);
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  font: 700 1.35rem/1.1 "TeX Gyre Heros", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+h1, h2 { font: inherit; }
+a { color: inherit; text-decoration: none; }
+a:hover { opacity: 0.6; }
+.muted { color: rgba(0, 0, 0, 0.25); }
+img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+
+main {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.slideshow { display: grid; cursor: pointer; }
+.slideshow figure { grid-area: 1 / 1; visibility: hidden; }
+.slideshow figure.active { visibility: visible; }
+figcaption { margin-top: 0.4em; text-align: right; }
+
+footer { margin-top: 2.5em; padding-bottom: 0.3em; }
+footer p + p { margin-top: 1.1em; }
+
+#cv {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 2rem;
+  pointer-events: none;
+}
+#cv > * { pointer-events: auto; }
+#cv dl + h2 { margin-top: 1.1em; }
+#cv dl { display: grid; grid-template-columns: 3fr 9fr; }
+#cv dl.narrow { grid-template-columns: 3fr 4fr 5fr; }
+
+@media (max-aspect-ratio: 4/5), (min-aspect-ratio: 2/3) and (max-height: 500px) {
+  body { font-size: 1.5rem; }
+  main, #cv { padding: 1.72rem; }
+  .columns { grid-template-columns: 1fr; gap: 2.2em; }
+}
+@media (min-aspect-ratio: 2/3) and (max-height: 500px) {
+  html { font-size: 2.88vh; }
+}
